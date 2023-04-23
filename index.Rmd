@@ -1,0 +1,97 @@
+---
+title: " Impact of marriage pressure on female students on their mental health, education,
+and goal-setting."
+author: "Analyst -  Ashiqur Rahman Rony"
+date: "2023-04-23"
+output: 
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+## Objectives of this study
+The mental health of university students is an area of increasing concern 
+worldwide. Although some recent studies revealed a high prevalence of depression and 
+anxiety among Bangladeshi university students, no study has yet investigated the link 
+between marriage pressure and these common psychological disorders and their effects 
+on career and goal setup. Therefore, aims of these study is-
+
+- To determine the state of marriage pressure on female undergraduate students
+-To determine the association between mental health and marriage pressure.
+- To determine how marriage pressure affects education, career, and goal setup.
+- To determine the influencing factors behind marriage pressure
+
+### Descriptive Statistics - Frequency analysis
+```{r, tbl.align = 'center', echo=FALSE}
+library(readxl)
+data <- read_excel("F:/Fiverr/up-work project/dataset/project 68.xlsx")
+tbl<- knitr::kable(table(data$MarriagePressure),col.names = c("Marriage Pressure", "Count"), "simple")
+tbl
+
+```
+
+
+
+
+
+
+```{r fig, fig.align='center', echo=FALSE}
+
+library(plotly)
+fig <- plot_ly(data, labels = ~MarriagePressure, values = ~frequency(MarriagePressure), type = 'pie')
+
+fig <- fig %>% layout(title = 'Marriage Pressure of Female Students',
+                      
+                      xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+                      
+                      yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+                      width = "50%", 
+                      height = 450)
+
+fig
+
+```
+A total of 936 participants responded to the survey. Of these, 595 participants answered "No" 
+to the question about having marriage pressure, while 341 participants answered "Yes."
+
+The results of the survey indicate that the majority of participants 63.6% answered 
+"No" to the question about having marriage pressure. Only 36.4% participants answered "Yes."
+This data suggests that a larger proportion of the participants did not experience marriage 
+pressure, while a smaller proportion reported that they did. The pie chart provides a clear and 
+straightforward representation of the distribution of responses and highlights the differences 
+between the two categories.
+
+When we look after another variable PHQ-9 (Patient Health Question) the scores were then 
+analyzed to categorize the students into different levels of depression severity, including 
+normal depression, mild depression, moderate depression, moderately severe depression, and 
+severe depression.
+
+### Depression Severity among students
+```{r, echo=FALSE}
+phq_categories<- ifelse(data$phq9 <= 4, "Normal",
+       ifelse(data$phq9 <= 9, "Mild", 
+              ifelse(data$phq9 <= 14,"Moderate",
+                     ifelse(data$phq9 <= 19, "Moderately Severe", 
+                            ifelse(data$phq9 <=27,"Severe",data$phq9)))))
+
+
+phq_categories <- table(phq_categories)
+phq_categories_df <- as.data.frame(phq_categories, stringsAsFactors = FALSE)
+colnames(phq_categories_df) <- c("Depression Severity", "Frequency")
+knitr::kable(phq_categories_df, col.names = c("Depression Severity", "Frequency"), "simple")
+
+library(plotly)
+fig <- plot_ly(phq_categories_df, x = ~`Depression Severity`, y = ~Frequency, type = "bar", color = ~`Depression Severity`) %>% 
+  layout(title = "Depression Severity Categories", xaxis = list(title = "Category"), yaxis = list(title = "Frequency"))
+
+fig
+
+```
+
+
+
