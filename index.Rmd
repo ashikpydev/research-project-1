@@ -27,7 +27,7 @@ on career and goal setup. Therefore, aims of these study is-
 - To determine the influencing factors behind marriage pressure
 
 ### Descriptive Statistics - Frequency analysis
-```{r, tbl.align = 'center', echo=FALSE}
+```{r, tbl.align = 'center'}
 library(readxl)
 data <- read_excel("F:/Fiverr/up-work project/dataset/project 68.xlsx")
 tbl<- knitr::kable(table(data$MarriagePressure),col.names = c("Marriage Pressure", "Count"), "simple")
@@ -40,7 +40,7 @@ tbl
 
 
 
-```{r fig, fig.align='center', echo=FALSE}
+```{r fig, fig.align='center'}
 
 library(plotly)
 fig <- plot_ly(data, labels = ~MarriagePressure, values = ~frequency(MarriagePressure), type = 'pie')
@@ -72,7 +72,7 @@ normal depression, mild depression, moderate depression, moderately severe depre
 severe depression.
 
 ### Depression Severity among students
-```{r, echo=FALSE}
+```{r}
 phq_categories<- ifelse(data$phq9 <= 4, "Normal",
        ifelse(data$phq9 <= 9, "Mild", 
               ifelse(data$phq9 <= 14,"Moderate",
