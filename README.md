@@ -15,4 +15,10 @@ on career and goal setup. Therefore, aims of these study is-
 ### Skills: Statistics, R programming, R Markdown, Excel
 ## live link: https://ashikpydev.github.io/research-project-1/
 
-![Screenshot 2023-04-25 at 01-11-22 Impact of marriage pressure on female students on their mental health education and goal-setting](https://user-images.githubusercontent.com/78363470/234093582-c26c6b03-846f-41c2-b672-5fe0cd5bb9d0.png)
+![Screenshot 2023-04-25 at 01-10-38 Impact of marriage pressure on female students on their mental health education and goal-setting](https://user-images.githubusercontent.com/78363470/234094943-932a2d6b-a803-4f85-bd0c-9d9d9499a584.png)
+
+![Screenshot 2023-04-25 at 01-12-36 Impact of marriage pressure on female students on their mental health education and goal-setting](https://user-images.githubusercontent.com/78363470/234094959-8ab38091-33c8-45c2-a2ab-17e93770b592.png)
+
+![Screenshot 2023-04-25 at 01-13-06 Impact of marriage pressure on female students on their mental health education and goal-setting](https://user-images.githubusercontent.com/78363470/234094956-865b362c-7df5-423d-8777-23bb3756bfbc.png)
+
+![Screenshot 2023-04-25 at 01-13-18 Impact of marriage pressure on female students on their mental health education and goal-setting](https://user-images.githubusercontent.com/78363470/234094950-1bf78371-c6ed-4614-ba95-2ffa25a98a2c.png)
