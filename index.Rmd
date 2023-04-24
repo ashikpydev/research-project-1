@@ -56,11 +56,11 @@ fig <- fig %>% layout(title = 'Marriage Pressure of Female Students',
 fig
 
 ```
-A total of 936 participants responded to the survey. Of these, 595 participants answered "No" 
-to the question about having marriage pressure, while 341 participants answered "Yes."
+A total of 936 participants responded to the survey. Of these, 587 participants answered "No" 
+to the question about having marriage pressure, while 349 participants answered "Yes."
 
-The results of the survey indicate that the majority of participants 63.6% answered 
-"No" to the question about having marriage pressure. Only 36.4% participants answered "Yes."
+The results of the survey indicate that the majority of participants 62.7% answered 
+"No" to the question about having marriage pressure. Only 37.3% participants answered "Yes."
 This data suggests that a larger proportion of the participants did not experience marriage 
 pressure, while a smaller proportion reported that they did. The pie chart provides a clear and 
 straightforward representation of the distribution of responses and highlights the differences 
@@ -93,5 +93,56 @@ fig
 
 ```
 
+### Marriage Pressure determining by Academic Year
 
 
+```{r}
+
+
+tt<-rbind(
+  
+  
+  nrow(data[data$Year == '1st' & data$MarriagePressure == 'yes', ]),
+  nrow(data[data$Year == '2nd' & data$MarriagePressure == 'yes', ]),
+  nrow(data[data$Year == '3rd' & data$MarriagePressure == 'yes', ]),
+  nrow(data[data$Year == '4th' & data$MarriagePressure == 'yes' , ]),
+  nrow(data[data$Year == 'masters' & data$MarriagePressure == 'yes', ])
+)
+
+academic_yr <- matrix(c('1st','2nd','3rd','4th','masters'), ncol=1)
+
+table_aca<- cbind(academic_yr,tt)
+
+table_aca_df <- as.data.frame(table_aca, stringsAsFactors = FALSE)
+
+# Rename the columns
+colnames(table_aca_df) <- c("Academic Year", "Marriage Pressure(yes)")
+
+
+total_stu<- data.frame(table(data$Year))
+colnames(total_stu) <- c("Academic Year", "Marriage Pressure(yes)")
+
+# Merge the two data frames by the "Academic Year" column
+merged_df <- merge(table_aca_df, total_stu, by = 'Academic Year' )
+
+knitr::kable(merged_df, col.names = c("Academic Year", "Marriage pressure(yes)", "Total Student"), "simple")
+```
+
+The given survey data contains information about the academic year, marriage pressure, and total number of students. Using this data, we created a frequency table and a clustered bar chart to visualize the relationship between academic year, marriage pressure, and total number of students. We also created an interactive stacked bar chart to allow for further exploration of the data. 
+
+```{r}
+# Create the bar chart
+library(plotly)
+
+plot_ly(merged_df, x = ~merged_df$`Academic Year`, y = ~`Marriage Pressure(yes).x`, name = "Marriage Pressure",
+        type = "bar", marker = list(color = "#F8766D")) %>%
+  add_trace(y = ~`Marriage Pressure(yes).y`, name = "Total Students",
+            marker = list(color = "#00BFC4")) %>%
+  layout(title = "Marriage Pressure vs Total Students by Academic Year",
+         xaxis = list(title = "Academic Year"),
+         yaxis = list(title = "Frequency"),
+         barmode = "stack")
+
+```
+
+Overall, the analysis suggests that marriage pressure may have an impact on the academic decisions of students, with higher levels of marriage pressure being associated with fewer students in higher academic years.
