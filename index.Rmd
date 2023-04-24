@@ -146,3 +146,43 @@ plot_ly(merged_df, x = ~merged_df$`Academic Year`, y = ~`Marriage Pressure(yes).
 ```
 
 Overall, the analysis suggests that marriage pressure may have an impact on the academic decisions of students, with higher levels of marriage pressure being associated with fewer students in higher academic years.
+
+
+
+### To determine the association between mental health and marriage pressure.
+
+```{r}
+library(dplyr)
+df<- data %>%
+  select(phq9) %>%
+  mutate(phqcat = 
+           ifelse(phq9 <= 4, 1,
+                  ifelse(phq9 <= 9,2,
+                         ifelse(phq9<= 14,3,
+                                ifelse(phq9<= 19,4,
+                                       ifelse(phq9<= 27, 5, data$phq9)))))
+           )
+
+data<- merge(data, df, by = 'phq9')
+
+library(kableExtra)
+
+# Execute Pearson's Chi-squared test
+result <- chisq.test(data$MarriagePressure, data$phqcat)
+
+# Create a table with the results
+tbl <- data.frame(
+  "Test" = "Pearson's Chi-squared test",
+  "Variables" = "Marriage Pressure and phq9 Categories",
+  "X-squared" = round(result$statistic, 2),
+  "df" = result$parameter,
+  "p-value" = format.pval(result$p.value)
+) %>%
+  kable(align = "c") %>%
+  kable_styling(full_width = FALSE)
+
+# Print the table
+tbl
+
+
+```
