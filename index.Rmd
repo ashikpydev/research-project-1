@@ -2,7 +2,7 @@
 title: " Impact of marriage pressure on female students on their mental health, education,
 and goal-setting."
 author: "Analyst -  Ashiqur Rahman Rony"
-date: "2023-04-23"
+date: This report is made only for showing as a sample project. And the data is manipulated with the real. 
 output: 
   html_document:
     theme: cerulean
@@ -14,7 +14,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
-### Objectives of this study - (I made this report with dummy data.)
+### Objectives of this study
 The mental health of university students is an area of increasing concern 
 worldwide. Although some recent studies revealed a high prevalence of depression and 
 anxiety among Bangladeshi university students, no study has yet investigated the link 
@@ -22,9 +22,7 @@ between marriage pressure and these common psychological disorders and their eff
 on career and goal setup. Therefore, aims of these study is-
 
 - To determine the state of marriage pressure on female undergraduate students
--To determine the association between mental health and marriage pressure.
-- To determine how marriage pressure affects education, career, and goal setup.
-- To determine the influencing factors behind marriage pressure
+- To determine the association between mental health and marriage pressure.
 
 ### Descriptive Statistics - Frequency analysis
 ```{r, tbl.align = 'center'}
@@ -186,3 +184,17 @@ tbl
 
 
 ```
+
+Here, p value < 0.05,
+So, Based on the result we can conclude that there is significant relationship between Marriage Pressure and PHQ-9(Patient Health Questionnaire).
+
+
+
+
+#### ------------------------------------------------------------------ The End ----------------------------------------------------------
+
+
+
+
+
+
